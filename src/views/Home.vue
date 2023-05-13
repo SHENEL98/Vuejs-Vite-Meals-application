@@ -13,12 +13,16 @@
 </template>
 
 <script setup> 
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import store from "../store";
+import axiosClient from "../axiosClient.js";
 
-const meals = computed(()=> store.state.meals)
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("");
 
+onMounted(async() => {
+  const response = await axiosClient.get('/list.php?i=list')
+  console.log(response.data)
+})
 </script>
 
 <style>
