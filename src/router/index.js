@@ -1,18 +1,41 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from '../views/Home.vue';
-import MealList from '../views/MealList.vue';
+import DefaultLayout from '../components/DefaultLayout.vue'
+import GuestLayout from '../components/GuestLayout.vue'
+import SearchByName from '../views/SearchByName.vue';
+import SearchByLetter from '../views/SearchByLetter.vue';
+import SearchByIngredients from '../views/SearchByIngredients.vue';
 
 const routes = [
   {
-    path: "/",
-    name: "home",
-    component: Home,
+    path:'/',
+    component: DefaultLayout,
+    children:[
+      {
+        path: "/",
+        name: "home",
+        component: Home,
+      },
+      {
+        path: "/by-name/:name?",
+        name: "byName",
+        component: SearchByName,
+      },
+      {
+        path: "/by-letter/:letter?",
+        name: "byLetter",
+        component: SearchByLetter,
+      },{
+        path: "/by-ingredients/:ingredients?",
+        name: "byIngredients",
+        component: SearchByIngredients,
+      },
+    ]
   },
   {
-    path:"/letter/:letter",
-    name:"byLetter",
-    component: MealList ,
-  },
+    path:'/guest',
+    component: GuestLayout
+  }
 ];
 
 const router = createRouter({
