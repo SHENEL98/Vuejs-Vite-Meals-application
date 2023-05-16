@@ -4,15 +4,7 @@
             @keyup="searchMeals">
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
-        <div v-for="meal of meals" :key="meal.idMeal" class="bg-white shadow rounded-xl">
-            <router-link :to="{name:'mealDetails', params:{id:meal.idMeal}}">
-                <img :src="meal.strMealThumb" :alt="strMeal">
-            </router-link>
-            <h3 class="p-3 font-semibold">{{ meal.strMeal }}</h3>
-            <div class="p-3 flex items justify-between">
-                <YoutubeButton :href="meal.strYoutube" />
-            </div>
-        </div>
+        <MealList v-for="meal of meals" :key="meal.idMeal" :meal="meal"/>
     </div>
 </template>
 
@@ -20,7 +12,7 @@
 import { computed, onMounted, ref } from 'vue';
 import store from '../store';
 import { useRoute } from "vue-router";
-import YoutubeButton from '../components/Youtube.vue';
+import MealList from '../components/MealList.vue';
 
 const route = useRoute();
 const keyword = ref('');
