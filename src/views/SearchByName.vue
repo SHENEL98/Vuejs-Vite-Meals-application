@@ -10,7 +10,7 @@
             </router-link>
             <h3 class="p-3 font-semibold">{{ meal.strMeal }}</h3>
             <div class="p-3 flex items justify-between">
-                <a :href="meal.strYoutube" target="_blank" class="px-3 py-2 rounded border-2 border-red-600 hover:bg-red-500 hover:text-white transition-colors">YouTube</a>
+                <YoutubeButton :href="meal.strYoutube" />
             </div>
         </div>
     </div>
@@ -20,6 +20,7 @@
 import { computed, onMounted, ref } from 'vue';
 import store from '../store';
 import { useRoute } from "vue-router";
+import YoutubeButton from '../components/Youtube.vue';
 
 const route = useRoute();
 const keyword = ref('');

@@ -1,19 +1,19 @@
 <template>
-    <div class="w-[800px] mx-auto p-8">
-        <pre>{{ meal }}</pre>
-        <h1 class="text-5xl font-bold mb-5">{{ meal.strMeal }}</h1>
-        <img :src="meal.strMealThumb" alt="meal.strMeal" class="max-w-[100%]">
-        <div class="grid grid-cols-1 md:grid-cols-3 text-lg py-2">
+    <div class="max-w-[800px] mx-auto p-8">
+        <h1 class="text-4xl font-bold mb-5 text-orange-500">{{ meal.strMeal }}</h1>
+        <img :src="meal.strMealThumb" :alt="meal.strMeal" class="max-w-[100%]">
+        <div class="grid grid-cols-1 sm:grid-cols-3 text-lg py-2">
             <div>
-                <strong class="font-bold">Category :</strong>{{ meal.strCategory }}
+                <strong class="font-bold">Category:</strong> {{ meal.strCategory }}
             </div>
             <div>
-                <strong class="font-bold">Area :</strong> {{ meal.strArea }}
+                <strong class="font-bold">Area:</strong> {{ meal.strArea }}
             </div>
             <div>
-                <strong class="font-bold">Tags :</strong> {{ meal.strTags }}
+                <strong class="font-bold">Tags:</strong> {{ meal.strTags }}
             </div>
         </div>
+
         <div class="my-3">
             {{ meal.strInstructions }}
         </div>
@@ -38,15 +38,18 @@
                     </template>
                 </ul>
             </div>
-            <div class="mt-4">
-                <a :href="meal.strYoutube" target="_blank"
-                    class="px-3 py-2 rounded border-2 border-red-600 hover:bg-red-500 hover:text-white transition-colors">YouTube</a>
-
+        </div>
+        <div class="mt-5 flex justify-normal  grid-cols-1 md:grid-cols-2">
+            <div>
+                <YouTubeButton :href="meal.strYoutube"> Go to Youtube</YouTubeButton>
+            </div>
+            <div>
                 <a :href="meal.strSource" target="_blank"
-                    class="ml-3 px-3 py-2 rounded border-2 border-transparent text-indigo-600 transition-colors">
+                    class="px-3 py-2 rounded border-2 border-indigo-600 hover:bg-indigo-500 hover:text-white transition-colors">
                     View Original Source
                 </a>
             </div>
+
         </div>
     </div>
 </template>
@@ -55,6 +58,7 @@
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import axiosClient from "../axiosClient";
+import YouTubeButton from '../components/Youtube.vue';
 
 const route = useRoute();
 const meal = ref({})
