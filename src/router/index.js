@@ -6,6 +6,7 @@ import SearchByName from '../views/SearchByName.vue';
 import SearchByLetter from '../views/SearchByLetter.vue';
 import SearchByIngredients from '../views/SearchByIngredients.vue';
 import MealDetails from '../views/MealDetails.vue';
+import AllIngredients from '../views/AllIngredients.vue';
 
 const routes = [
   {
@@ -28,8 +29,13 @@ const routes = [
         component: SearchByLetter,
       },
       {
-        path: "/by-ingredients/:ingredients?",
-        name: "byIngredients",
+        path: "/ingredients",
+        name: "allIngredients",
+        component: AllIngredients,
+      },
+      {
+        path: "/by-ingredient/:ingredient",
+        name: "byIngredient",
         component: SearchByIngredients,
       },
       {
